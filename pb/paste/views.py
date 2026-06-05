@@ -181,7 +181,7 @@ def put(**kwargs):
     # FIXME: such query; wow
     invalidate(**kwargs)
     result = model.put(stream, headers=headers, **kwargs)
-    if result['n']:
+    if result.matched_count:
         paste = next(model.get_meta(**kwargs))
         return PasteResponse(paste, "updated")
 
@@ -196,7 +196,7 @@ def delete(**kwargs):
 
     paste = invalidate(**kwargs)
     result = model.delete(**kwargs)
-    if result['n']:
+    if result.deleted_count:
         return PasteResponse(paste, "deleted")
     return StatusResponse("not found", 404)
 
