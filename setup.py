@@ -2,7 +2,7 @@ import setuptools
 
 
 with open('requirements.txt') as f:
-    install_requires = list(f)
+    install_requires = [line.strip() for line in f if line.strip()]
 
 setuptools.setup(
     use_scm_version=True,
