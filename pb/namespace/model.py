@@ -36,5 +36,5 @@ def create(name):
         _id=uuid4().hex,
         name=name
     )
-    get_db().namespaces.insert(d)
+    get_db().namespaces.insert_one(d)
     return d
